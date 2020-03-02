@@ -15,7 +15,7 @@ Map<String, dynamic> _$_$HasOnboardedToJson(_$HasOnboarded instance) =>
 
 _$UserLoggedIn _$_$UserLoggedInFromJson(Map<String, dynamic> json) {
   return _$UserLoggedIn(
-    user: json['user'] == null
+    json['user'] == null
         ? null
         : User.fromJson(json['user'] as Map<String, dynamic>),
   );

@@ -11,55 +11,66 @@ User _$UserFromJson(Map<String, dynamic> json) {
 }
 
 abstract class _$User {
-  String get name;
+  String get firstName;
   String get id;
+  String get lastName;
   String get email;
 
-  User copyWith({String name, String id, String email});
+  User copyWith({String firstName, String id, String lastName, String email});
 
   Map<String, dynamic> toJson();
 }
 
 @JsonSerializable()
 class _$_User implements _User {
-  const _$_User({this.name, this.id, this.email});
+  const _$_User({this.firstName, this.id, this.lastName, this.email});
 
   factory _$_User.fromJson(Map<String, dynamic> json) =>
       _$_$_UserFromJson(json);
 
   @override
-  final String name;
+  final String firstName;
   @override
   final String id;
+  @override
+  final String lastName;
   @override
   final String email;
 
   @override
   String toString() {
-    return 'User(name: $name, id: $id, email: $email)';
+    return 'User(firstName: $firstName, id: $id, lastName: $lastName, email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return other is _User &&
-        (identical(other.name, name) || other.name == name) &&
+        (identical(other.firstName, firstName) ||
+            other.firstName == firstName) &&
         (identical(other.id, id) || other.id == id) &&
+        (identical(other.lastName, lastName) || other.lastName == lastName) &&
         (identical(other.email, email) || other.email == email);
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ name.hashCode ^ id.hashCode ^ email.hashCode;
+      runtimeType.hashCode ^
+      firstName.hashCode ^
+      id.hashCode ^
+      lastName.hashCode ^
+      email.hashCode;
 
   @override
   _$_User copyWith({
-    Object name = immutable,
+    Object firstName = immutable,
     Object id = immutable,
+    Object lastName = immutable,
     Object email = immutable,
   }) {
     return _$_User(
-      name: name == immutable ? this.name : name as String,
+      firstName: firstName == immutable ? this.firstName : firstName as String,
       id: id == immutable ? this.id : id as String,
+      lastName: lastName == immutable ? this.lastName : lastName as String,
       email: email == immutable ? this.email : email as String,
     );
   }
@@ -71,17 +82,20 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({String name, String id, String email}) = _$_User;
+  const factory _User(
+      {String firstName, String id, String lastName, String email}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  String get name;
+  String get firstName;
   @override
   String get id;
+  @override
+  String get lastName;
   @override
   String get email;
 
   @override
-  _User copyWith({String name, String id, String email});
+  _User copyWith({String firstName, String id, String lastName, String email});
 }

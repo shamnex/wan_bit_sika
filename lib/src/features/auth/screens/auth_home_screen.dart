@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../service_locator.dart';
-import 'bloc/login_bloc.dart';
+import 'login/bloc/login_bloc.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>();
 

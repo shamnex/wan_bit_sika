@@ -4,7 +4,7 @@ import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
 import 'package:wan_bi_sika/src/features/app/bloc/app_state.dart';
 import 'package:wan_bi_sika/src/features/auth/bloc/auth_bloc.dart';
 import 'package:wan_bi_sika/src/features/auth/bloc/auth_state.dart';
-import 'package:wan_bi_sika/src/features/auth/screens/welcome_screen.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/auth_home_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
             return Center(child: Text('Tracka'));
           }
           if (authState is AuthUnAuthenticated) {
-            return WelcomeScreen();
+            return AuthHomeScreen();
           }
           return Center(child: Text('HOME SCREEN'));
         },

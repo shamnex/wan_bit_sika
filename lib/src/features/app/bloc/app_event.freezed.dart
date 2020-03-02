@@ -169,7 +169,7 @@ abstract class HasOnboarded implements AppEvent {
 
 @JsonSerializable()
 class _$UserLoggedIn implements UserLoggedIn {
-  const _$UserLoggedIn({this.user});
+  const _$UserLoggedIn(this.user);
 
   factory _$UserLoggedIn.fromJson(Map<String, dynamic> json) =>
       _$_$UserLoggedInFromJson(json);
@@ -196,7 +196,7 @@ class _$UserLoggedIn implements UserLoggedIn {
     Object user = immutable,
   }) {
     return _$UserLoggedIn(
-      user: user == immutable ? this.user : user as User,
+      user == immutable ? this.user : user as User,
     );
   }
 
@@ -275,7 +275,7 @@ class _$UserLoggedIn implements UserLoggedIn {
 }
 
 abstract class UserLoggedIn implements AppEvent {
-  const factory UserLoggedIn({User user}) = _$UserLoggedIn;
+  const factory UserLoggedIn(User user) = _$UserLoggedIn;
 
   factory UserLoggedIn.fromJson(Map<String, dynamic> json) =
       _$UserLoggedIn.fromJson;

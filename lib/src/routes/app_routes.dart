@@ -20,7 +20,6 @@ class AppRoutes {
         return HomeScreen();
       case auth:
         return AuthHomeScreen();
-
       default:
         return HomeScreen();
     }

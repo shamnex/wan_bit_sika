@@ -10,6 +10,7 @@ import 'package:wan_bi_sika/src/features/onboarding/screens/partials/onboard_car
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:wan_bi_sika/src/routes/app_routes.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen();
@@ -87,7 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                     padding: AppPaddings.bodyH,
                     child: AppButton(
                       onPressed: () {
-                        BlocProvider.of<AppBloc>(context).add(HasOnboarded());
+                        Navigator.of(context).pushNamed(AppRoutes.auth);
                       },
                       child: Text(
                         'Get Started'.toUpperCase(),
@@ -97,7 +98,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                   ),
                   FlatButton(
                     onPressed: () {
-                      context.bloc<AppBloc>().add(HasOnboarded());
+                      Navigator.of(context).pushNamed(AppRoutes.auth);
                     },
                     child: Text(
                       'Skip',

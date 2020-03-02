@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:wan_bi_sika/src/features/app/model/user_model.dart';
-import '../../auth_repository.dart';
+import '../../../auth_repository.dart';
 import 'login_state.dart';
 import 'login_event.dart';
 
@@ -19,9 +19,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginEvent event,
   ) async* {
     if (event is LoginWithGoogle) {
-      await Future.delayed(Duration(milliseconds: 500));
       yield Loading();
-      yield Success(user: User(email: 'shamnex@icloud.com'));
+      await Future.delayed(Duration(milliseconds: 2000));
+      yield Success(user: User(email: 'mona.okeme@icloud.com', firstName: "Mona", lastName: "Okeme"));
     }
   }
 }

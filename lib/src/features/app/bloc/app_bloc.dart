@@ -34,6 +34,7 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   @override
   Map<String, dynamic> toJson(state) {
     try {
+      print('here');
       return state.toJson();
     } catch (e) {
       return null;

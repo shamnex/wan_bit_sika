@@ -4,21 +4,52 @@ import 'package:wan_bi_sika/src/constants/icons.dart';
 import 'package:wan_bi_sika/src/constants/paddings.dart';
 import 'package:wan_bi_sika/src/core/widgets/buttons.dart';
 import 'package:wan_bi_sika/src/core/widgets/screen.dart';
+import 'package:wan_bi_sika/src/core/widgets/snack_bar.dart';
 import 'package:wan_bi_sika/src/core/widgets/staggered_animated_column.dart';
-import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
-import 'package:wan_bi_sika/src/features/app/bloc/app_event.dart';
-import 'package:wan_bi_sika/src/features/auth/routes/auth_routes.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/login/bloc/login_bloc.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/login/bloc/login_state.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/login/bloc/login_event.dart';
 import 'package:wan_bi_sika/src/features/auth/screens/partials/terms_conditions.dart';
-import 'bloc/login_bloc.dart';
-import 'bloc/login_event.dart';
-import 'bloc/login_state.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key key}) : super(key: key);
+class AccountSetupScreen extends StatelessWidget {
+  const AccountSetupScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final theme = Theme.of(context);
+    List<Step> steps = [
+      Step(
+        title: const Text('New Account'),
+        isActive: true,
+        state: StepState.complete,
+        content: Column(
+          children: <Widget>[
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Email Address'),
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Password'),
+            ),
+          ],
+        ),
+      ),
+      Step(
+        isActive: false,
+        state: StepState.editing,
+        title: const Text('Address'),
+        content: Column(
+          children: <Widget>[
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Home Address'),
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Postcode'),
+            ),
+          ],
+        ),
+      ),
+    ];
+
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       body: Container(
@@ -30,8 +61,7 @@ class LoginScreen extends StatelessWidget {
                 intial: () {},
                 loading: () {},
                 success: (user) {
-                  context.bloc<AppBloc>().add(UserLoggedIn(user));
-                  Navigator.of(context).pushReplacementNamed(AuthRoutes.accountSetup);
+                  AppSnacks.showSuccess(context, message: 'Logged In Successfully');
                 });
           },
           child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
