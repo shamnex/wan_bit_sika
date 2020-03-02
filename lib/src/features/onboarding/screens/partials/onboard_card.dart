@@ -1,10 +1,21 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:wan_bi_sika/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:wan_bi_sika/src/core/widgets/staggered_animated_column.dart';
+
 class OnboardCard extends StatefulWidget {
-  final String text;
-  const OnboardCard({Key key, this.text, this.offset}) : super(key: key);
+  final String description;
+  final String title;
+  final String svg;
+  const OnboardCard({
+    Key key,
+    this.description,
+    this.offset,
+    this.svg,
+    this.title,
+  }) : super(key: key);
   final double offset;
 
   @override
@@ -59,29 +70,32 @@ class _OnboardCardState extends State<OnboardCard> with TickerProviderStateMixin
                       color: AppColors.primary.shade50,
                       borderRadius: BorderRadius.circular(16), //<--custom shape
                     ),
-                    child: Column(
-                      children: <Widget>[
-                        ClipRRect(
-                            //<--clipping image
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                            child: SizedBox()),
-                        Expanded(
-                          child: SizedBox.expand(), //<-- will be replaced soon :)
-                        ),
-                      ],
-                    ),
+                    child: SvgPicture.asset(widget.svg),
                   ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              child: Text(
-                widget.text,
-                style: Theme.of(context).textTheme.body2,
-                maxLines: 2,
-                textAlign: TextAlign.center,
-              ),
+            StaggeredAnimatedColumn(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    widget.title,
+                    style: Theme.of(context).textTheme.title.copyWith(fontWeight: FontWeight.w900),
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  child: Text(
+                    widget.description,
+                    style: Theme.of(context).textTheme.body2,
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             )
           ],
         ),

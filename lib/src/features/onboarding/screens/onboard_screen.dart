@@ -1,5 +1,7 @@
 import 'package:wan_bi_sika/src/constants/colors.dart';
 import 'package:wan_bi_sika/src/constants/paddings.dart';
+import 'package:wan_bi_sika/src/constants/strings.dart';
+import 'package:wan_bi_sika/src/constants/svgs.dart';
 import 'package:wan_bi_sika/src/core/widgets/buttons.dart';
 import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
 import 'package:wan_bi_sika/src/features/app/bloc/app_event.dart';
@@ -19,10 +21,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
   PageController pageController;
   double pageOffset = 0;
   int activeIndex = 0;
-  final onBoardTexts = [
-    ' ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam ',
-    ', quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-    'Duis aute irure dolor in reprehenderit in voluptate velit'
+  final onBoardTexts = AppString.onBoardTextsEG;
+  final onBoardTitle = AppString.onBoardTitle;
+  final onBoardTSVGS = [
+    AppSVGs.sendMoney,
+    AppSVGs.mobileBanking,
+    AppSVGs.savingExpenses,
   ];
 
   @override
@@ -46,9 +50,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .05,
-              ),
+              SizedBox(height: MediaQuery.of(context).size.height * .05),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .65,
                 child: PageView(
@@ -60,22 +62,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                   controller: pageController,
                   children: <Widget>[
                     ...List.generate(
-                        onBoardTexts.length,
-                        (index) => OnboardCard(
-                              offset: pageOffset - index,
-                              text: onBoardTexts[index],
-                            ))
+                      onBoardTexts.length,
+                      (index) => OnboardCard(
+                        offset: pageOffset - index,
+                        description: onBoardTexts[index],
+                        title: onBoardTitle[index],
+                        svg: onBoardTSVGS[index],
+                      ),
+                    )
                   ],
                 ),
               ),
               Expanded(
                   child: Column(
                 children: <Widget>[
+                  const Spacer(),
                   BuildIndicators(
                     activeItem: activeIndex,
                     itemCount: onBoardTexts.length,
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 20),
                   Padding(
                     padding: AppPaddings.bodyH,
                     child: AppButton(
@@ -88,17 +94,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                       ),
                     ),
                   ),
-                  const Spacer(),
                   FlatButton(
                     onPressed: () {
-                      BlocProvider.of<AppBloc>(context).add(HasOnboarded());
+                      context.bloc<AppBloc>().add(HasOnboarded());
                     },
                     child: Text(
                       'Skip',
                       style: Theme.of(context).textTheme.button.copyWith(color: AppColors.secondary.shade200),
                     ),
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 20),
                 ],
               )),
             ],

@@ -7,36 +7,36 @@ class AppColors {
   static const MaterialColor primary = MaterialColor(
     _primaryColor,
     <int, Color>{
-      50: Color(0xFFfdf2e6),
-      100: Color(0xFFfae0bf),
-      200: Color(0xFFfae0bf),
-      300: Color(0xFFfae0bf),
-      400: Color(0xFFfae0bf),
-      500: Color(_primaryColor),
-      600: Color(0xFFed8e26),
-      700: Color(0xFFeb8320),
-      800: Color(0xFFe46810),
-      900: Color(0xFFe46810),
+      50: Color(0xFFe2f2ff),
+      100: Color(0xFFbaddff),
+      200: Color(0xFF8bc8ff),
+      300: Color(0xFF56b2ff),
+      400: Color(0xFF29a0ff),
+      500: Color(0xFF008fff),
+      600: Color(0xFF1a80ff),
+      700: Color(_primaryColor),
+      800: Color(0xFF2d59e4),
+      900: Color(0xFF3335c4),
     },
   );
 
   static const MaterialColor secondary = MaterialColor(
     _secondaryColor,
     <int, Color>{
-      50: Color(0xFFeee8e0),
-      100: Color(0xFFd5c5b3),
-      200: Color(0xFFba9f80),
-      300: Color(0xFF9e784d),
-      400: Color(0xFF895b26),
-      500: Color(_secondaryColor),
-      600: Color(0xFF6c3800),
-      700: Color(0xFF613000),
-      800: Color(0xFF572800),
-      900: Color(0xFF441b00),
+      50: Color(_secondaryColor),
+      100: Color(0xFFbbddfe),
+      200: Color(0xFF91c9fc),
+      300: Color(0xFF68b4f8),
+      400: Color(0xFF4aa3f7),
+      500: Color(0xFF3494f4),
+      600: Color(0xFF3286e6),
+      700: Color(0xFF2e74d3),
+      800: Color(0xFF2a63c0),
+      900: Color(0xFF2444a0),
     },
   );
-  static const int _primaryColor = 0xFFEF962B;
-  static const int _secondaryColor = 0xFF743E00;
+  static const int _primaryColor = 0xFF276DF7;
+  static const int _secondaryColor = 0xFFe2f2ff;
   static const Color background = Color(0xFFEDEDED);
   static const Color backgroundDark = Color(0xff303030);
   static const Color text = Colors.black87;
