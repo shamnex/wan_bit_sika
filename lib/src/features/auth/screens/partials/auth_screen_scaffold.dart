@@ -1,6 +1,6 @@
-import 'package:flutter_scaffold/src/constants/border_radius.dart';
-import 'package:flutter_scaffold/src/constants/colors.dart';
-import 'package:flutter_scaffold/src/constants/paddings.dart';
+import 'package:wan_bi_sika/src/constants/border_radius.dart';
+import 'package:wan_bi_sika/src/constants/colors.dart';
+import 'package:wan_bi_sika/src/constants/paddings.dart';
 import 'package:flutter/material.dart';
 
 import 'auth_app_bar.dart';

@@ -1,10 +1,10 @@
-import 'package:flutter_scaffold/src/constants/colors.dart';
-import 'package:flutter_scaffold/src/constants/paddings.dart';
-import 'package:flutter_scaffold/src/core/widgets/buttons.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_bloc.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_event.dart';
-import 'package:flutter_scaffold/src/features/onboarding/screens/partials/indicators.dart';
-import 'package:flutter_scaffold/src/features/onboarding/screens/partials/onboard_card.dart';
+import 'package:wan_bi_sika/src/constants/colors.dart';
+import 'package:wan_bi_sika/src/constants/paddings.dart';
+import 'package:wan_bi_sika/src/core/widgets/buttons.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_event.dart';
+import 'package:wan_bi_sika/src/features/onboarding/screens/partials/indicators.dart';
+import 'package:wan_bi_sika/src/features/onboarding/screens/partials/onboard_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';

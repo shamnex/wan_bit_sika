@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_bloc.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_state.dart';
-import 'package:flutter_scaffold/src/features/auth/bloc/auth_bloc.dart';
-import 'package:flutter_scaffold/src/features/auth/bloc/auth_state.dart';
-import 'package:flutter_scaffold/src/features/auth/screens/welcome_screen.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_state.dart';
+import 'package:wan_bi_sika/src/features/auth/bloc/auth_bloc.dart';
+import 'package:wan_bi_sika/src/features/auth/bloc/auth_state.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/welcome_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);

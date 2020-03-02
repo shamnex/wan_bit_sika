@@ -3,9 +3,9 @@ library app_state;
 import 'package:meta/meta.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:flutter_scaffold/src/features/app/model/user_model.dart';
-import 'package:flutter_scaffold/src/features/app/model/app_theme.dart';
-import 'package:flutter_scaffold/flavor/flavor.dart';
+import 'package:wan_bi_sika/src/features/app/model/user_model.dart';
+import 'package:wan_bi_sika/src/features/app/model/app_theme.dart';
+import 'package:wan_bi_sika/flavor/flavor.dart';
 
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';

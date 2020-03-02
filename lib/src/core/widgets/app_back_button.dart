@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_scaffold/src/constants/icons.dart';
+import 'package:wan_bi_sika/src/constants/icons.dart';
 
 class AppBackButton extends StatelessWidget {
   const AppBackButton({Key key, this.color, this.onPressed}) : super(key: key);

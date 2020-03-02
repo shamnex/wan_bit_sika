@@ -1,6 +1,6 @@
-import 'package:flutter_scaffold/src/core/network/http_client.dart';
-import 'package:flutter_scaffold/src/core/network/token_manager.dart';
-import 'package:flutter_scaffold/src/features/app/model/user_model.dart';
+import 'package:wan_bi_sika/src/core/network/http_client.dart';
+import 'package:wan_bi_sika/src/core/network/token_manager.dart';
+import 'package:wan_bi_sika/src/features/app/model/user_model.dart';
 import 'package:hive/hive.dart';
 
 enum ActionRequired { createorg, loginorg }

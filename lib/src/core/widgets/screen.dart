@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_scaffold/src/constants/colors.dart';
-import 'package:flutter_scaffold/src/core/widgets/remove_focus_widget.dart';
+import 'package:wan_bi_sika/src/constants/colors.dart';
+import 'package:wan_bi_sika/src/core/widgets/remove_focus_widget.dart';
 
 import 'app_loading.dart';
 import 'blur_bg_widget.dart';

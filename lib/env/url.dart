@@ -1,4 +1,4 @@
-import 'package:flutter_scaffold/flavor/flavor.dart';
+import 'package:wan_bi_sika/flavor/flavor.dart';
 
 class BaseURL {
   BaseURL._();

@@ -1,4 +1,4 @@
-import 'package:flutter_scaffold/src/core/network/connectiviy_service.dart';
+import 'package:wan_bi_sika/src/core/network/connectiviy_service.dart';
 import 'package:bloc/bloc.dart';
 
 class ConnectivityEvent {

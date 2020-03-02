@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_scaffold/env/url.dart';
-import 'package:flutter_scaffold/flavor/flavor.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_bloc.dart';
+import 'package:wan_bi_sika/env/url.dart';
+import 'package:wan_bi_sika/flavor/flavor.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';

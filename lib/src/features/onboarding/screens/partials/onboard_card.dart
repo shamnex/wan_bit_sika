@@ -1,4 +1,4 @@
-import 'package:flutter_scaffold/src/constants/colors.dart';
+import 'package:wan_bi_sika/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 

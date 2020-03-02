@@ -1,7 +1,7 @@
-import 'package:flutter_scaffold/src/core/network/http_error_helper.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_bloc.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_event.dart';
-import 'package:flutter_scaffold/src/features/auth/auth_repository.dart';
+import 'package:wan_bi_sika/src/core/network/http_error_helper.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_event.dart';
+import 'package:wan_bi_sika/src/features/auth/auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 

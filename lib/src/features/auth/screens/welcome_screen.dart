@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_scaffold/src/constants/paddings.dart';
-import 'package:flutter_scaffold/src/core/widgets/staggered_animated_column.dart';
+import 'package:wan_bi_sika/src/constants/paddings.dart';
+import 'package:wan_bi_sika/src/core/widgets/staggered_animated_column.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key key}) : super(key: key);

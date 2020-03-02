@@ -1,7 +1,7 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_scaffold/src/constants/colors.dart';
+import 'package:wan_bi_sika/src/constants/colors.dart';
 
 class AppSnacks {
   static final List<Flushbar> _snacks = [];

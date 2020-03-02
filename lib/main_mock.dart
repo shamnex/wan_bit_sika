@@ -1,5 +1,5 @@
-import 'package:flutter_scaffold/flavor/flavor.dart';
-import 'package:flutter_scaffold/src/service_locator.dart' as di;
+import 'package:wan_bi_sika/flavor/flavor.dart';
+import 'package:wan_bi_sika/src/service_locator.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';

@@ -1,5 +1,5 @@
-import 'package:flutter_scaffold/src/features/auth/screens/login/login_screen.dart';
-import 'package:flutter_scaffold/src/features/auth/screens/signup/screen/signup_screen.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/login/login_screen.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/signup/screen/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

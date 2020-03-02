@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:flutter_scaffold/src/core/network/token_manager.dart';
+import 'package:wan_bi_sika/src/core/network/token_manager.dart';
 
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';

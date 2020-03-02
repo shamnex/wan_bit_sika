@@ -1,10 +1,10 @@
-import 'package:flutter_scaffold/src/features/app/bloc/app_bloc.dart';
-import 'package:flutter_scaffold/src/features/app/bloc/app_state.dart';
-import 'package:flutter_scaffold/src/features/app/model/app_theme.dart';
-import 'package:flutter_scaffold/src/features/auth/bloc/bloc.dart';
-import 'package:flutter_scaffold/src/features/home/home_screen.dart';
-import 'package:flutter_scaffold/src/features/onboarding/screens/onboard_screen.dart';
-import 'package:flutter_scaffold/src/routes/app_routes.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_state.dart';
+import 'package:wan_bi_sika/src/features/app/model/app_theme.dart';
+import 'package:wan_bi_sika/src/features/auth/bloc/bloc.dart';
+import 'package:wan_bi_sika/src/features/home/home_screen.dart';
+import 'package:wan_bi_sika/src/features/onboarding/screens/onboard_screen.dart';
+import 'package:wan_bi_sika/src/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

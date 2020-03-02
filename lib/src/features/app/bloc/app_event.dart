@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_scaffold/src/features/app/model/app_theme.dart';
-import 'package:flutter_scaffold/src/features/app/model/user_model.dart';
+import 'package:wan_bi_sika/src/features/app/model/app_theme.dart';
+import 'package:wan_bi_sika/src/features/app/model/user_model.dart';
 
 abstract class AppEvent extends Equatable {
   AppEvent();
