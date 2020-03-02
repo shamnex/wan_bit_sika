@@ -9,25 +9,17 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
 
   Flavor _flavor;
   @override
-  get initialState => super.initialState.copyWith(hasOnboarded: false) ?? AppState.initialState(flavor: _flavor);
+  get initialState => super.initialState ?? AppState.initialState(flavor: _flavor);
 
   @override
   Stream<AppState> mapEventToState(AppEvent event) async* {
-    if (event is ThemeChanged) {
-      yield state.copyWith(theme: event.theme);
-    }
-    if (event is HasCompletedWalkThrough) {
-      yield state.copyWith(hasCompletedWalkThrough: true);
-    }
-    if (event is UserLoggedIn) {
-      yield state.copyWith(currentUser: event.user);
-    }
-    if (event is HasOnboarded) {
-      yield state.copyWith(hasOnboarded: true);
-    }
-    if (event is UserLoggedOut) {
-      yield state.copyWith(currentUser: null);
-    }
+    yield event.when<AppState>(
+      hasOnboarded: () => state.copyWith(hasOnboarded: false),
+      userLoggedIn: (user) => state.copyWith(currentUser: user),
+      userLoggedOut: () => state.copyWith(currentUser: null),
+      walkThroughComplete: () => state.copyWith(hasCompletedWalkThrough: true),
+      themChanged: (theme) => state.copyWith(theme: theme),
+    );
   }
 
   @override

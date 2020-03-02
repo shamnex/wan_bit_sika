@@ -64,6 +64,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with TickerProvider
                     ...List.generate(
                       onBoardTexts.length,
                       (index) => OnboardCard(
+                        isActive: activeIndex == index,
                         offset: pageOffset - index,
                         description: onBoardTexts[index],
                         title: onBoardTitle[index],

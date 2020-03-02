@@ -14,11 +14,14 @@ _$_AppState _$_$_AppStateFromJson(Map<String, dynamic> json) {
     flavor: _$enumDecodeNullable(_$FlavorEnumMap, json['flavor']),
     theme: _$enumDecodeNullable(_$AppThemeEnumMap, json['theme']),
     hasCompletedWalkThrough: json['hasCompletedWalkThrough'] as bool,
-    currentUser: json['currentUser'] == null ? null : User.fromJson(json['currentUser'] as Map<String, dynamic>),
+    currentUser: json['currentUser'] == null
+        ? null
+        : User.fromJson(json['currentUser'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$_$_AppStateToJson(_$_AppState instance) => <String, dynamic>{
+Map<String, dynamic> _$_$_AppStateToJson(_$_AppState instance) =>
+    <String, dynamic>{
       'hasOnboarded': instance.hasOnboarded,
       'loading': instance.loading,
       'iteration': instance.iteration,
@@ -38,7 +41,9 @@ T _$enumDecode<T>(
         '${enumValues.values.join(', ')}');
   }
 
-  final value = enumValues.entries.singleWhere((e) => e.value == source, orElse: () => null)?.key;
+  final value = enumValues.entries
+      .singleWhere((e) => e.value == source, orElse: () => null)
+      ?.key;
 
   if (value == null && unknownValue == null) {
     throw ArgumentError('`$source` is not one of the supported values: '

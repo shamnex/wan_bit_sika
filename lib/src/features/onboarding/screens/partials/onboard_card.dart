@@ -9,12 +9,14 @@ class OnboardCard extends StatefulWidget {
   final String description;
   final String title;
   final String svg;
+  final bool isActive;
   const OnboardCard({
     Key key,
     this.description,
     this.offset,
     this.svg,
     this.title,
+    this.isActive,
   }) : super(key: key);
   final double offset;
 
@@ -50,6 +52,7 @@ class _OnboardCardState extends State<OnboardCard> with TickerProviderStateMixin
         child: Column(
           children: <Widget>[
             Expanded(
+              flex: 4,
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: <Widget>[
@@ -75,27 +78,43 @@ class _OnboardCardState extends State<OnboardCard> with TickerProviderStateMixin
                 ],
               ),
             ),
-            StaggeredAnimatedColumn(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    widget.title,
-                    style: Theme.of(context).textTheme.title.copyWith(fontWeight: FontWeight.w900),
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  child: Text(
-                    widget.description,
-                    style: Theme.of(context).textTheme.body2,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
+            Expanded(
+              child: AnimatedSwitcher(
+                duration: Duration(milliseconds: 1000),
+                child: Builder(
+                    key: ValueKey(widget.isActive),
+                    builder: (context) {
+                      if (!widget.isActive) {
+                        return SizedBox();
+                      }
+                      return StaggeredAnimatedColumn(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(),
+                          SizedBox(),
+                          Container(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              widget.title,
+                              style: Theme.of(context).textTheme.title.copyWith(fontWeight: FontWeight.w900),
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                            child: Text(
+                              widget.description,
+                              style: Theme.of(context).textTheme.body2,
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(),
+                        ],
+                      );
+                    }),
+              ),
             )
           ],
         ),

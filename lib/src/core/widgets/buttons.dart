@@ -81,7 +81,7 @@ class _AppButtonState extends State<AppButton> {
                         begin: Alignment.topLeft.add(Alignment(.4, 0)),
                         end: Alignment.bottomRight,
                         colors: [
-                            AppColors.secondary.shade900,
+                            AppColors.secondary.shade400,
                             AppColors.primary,
                             AppColors.primary,
                           ])),

@@ -1,5 +1,4 @@
 import 'package:wan_bi_sika/src/features/auth/screens/login/login_screen.dart';
-import 'package:wan_bi_sika/src/features/auth/screens/signup/screen/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +16,6 @@ class AuthRoutes {
     switch (settings.name) {
       case login:
         return LoginScreen();
-      case signup:
-        return SignupScreen();
       default:
         return LoginScreen();
     }

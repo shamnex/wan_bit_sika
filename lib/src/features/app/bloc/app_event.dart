@@ -2,33 +2,20 @@ import 'package:equatable/equatable.dart';
 import 'package:wan_bi_sika/src/features/app/model/app_theme.dart';
 import 'package:wan_bi_sika/src/features/app/model/user_model.dart';
 
-abstract class AppEvent extends Equatable {
-  AppEvent();
-  List<Object> get props => [];
-}
+import 'package:meta/meta.dart';
+import 'package:wan_bi_sika/src/features/app/model/user_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class HasOnboarded extends AppEvent {
-  @override
-  List<Object> get props => ['HasOnboarded'];
-}
+part 'app_event.freezed.dart';
+part 'app_event.g.dart';
 
-class UserLoggedIn extends AppEvent {
-  final User user;
-  UserLoggedIn(this.user);
-  @override
-  List<Object> get props => [user];
-}
+@immutable
+abstract class AppEvent with _$AppEvent {
+  const factory AppEvent.hasOnboarded() = HasOnboarded;
+  const factory AppEvent.userLoggedIn({User user}) = UserLoggedIn;
+  const factory AppEvent.userLoggedOut() = UserLoggedOut;
+  const factory AppEvent.walkThroughComplete() = HasCompletedWalkThrough;
+  const factory AppEvent.themChanged({AppTheme them}) = ThemeChanged;
 
-class UserLoggedOut extends AppEvent {}
-
-class HasCompletedWalkThrough extends AppEvent {
-  @override
-  List<Object> get props => ['HasCompletedWalkThrough'];
-}
-
-class ThemeChanged extends AppEvent {
-  ThemeChanged({this.theme});
-  final AppTheme theme;
-  @override
-  List<Object> get props => [theme];
+  factory AppEvent.fromJson(Map<String, dynamic> json) => _$AppEventFromJson(json);
 }
