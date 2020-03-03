@@ -15,15 +15,17 @@ Map<String, dynamic> _$_$HasOnboardedToJson(_$HasOnboarded instance) =>
 
 _$UserLoggedIn _$_$UserLoggedInFromJson(Map<String, dynamic> json) {
   return _$UserLoggedIn(
-    json['user'] == null
+    user: json['user'] == null
         ? null
         : User.fromJson(json['user'] as Map<String, dynamic>),
+    pin: json['pin'] as String,
   );
 }
 
 Map<String, dynamic> _$_$UserLoggedInToJson(_$UserLoggedIn instance) =>
     <String, dynamic>{
       'user': instance.user,
+      'pin': instance.pin,
     };
 
 _$UserLoggedOut _$_$UserLoggedOutFromJson(Map<String, dynamic> json) {

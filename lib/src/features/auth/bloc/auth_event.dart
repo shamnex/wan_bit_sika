@@ -1,13 +1,11 @@
-import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
+part 'auth_event.freezed.dart';
 
-abstract class AuthEvent extends Equatable {
-  AuthEvent();
-  @override
-  List<Object> get props => [];
+@immutable
+abstract class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.beginAuthentication() = BeginAuthentication;
+  const factory AuthEvent.deauthenticate() = Deauthenticate;
+  const factory AuthEvent.authenticate() = Authenticate;
+  const factory AuthEvent.verifyPin() = VerifyPin;
+  const factory AuthEvent.walkThroughComplete() = HasCompletedWalkThrough;
 }
-
-class BeginAuthentication extends AuthEvent {}
-
-class Deauthenticate extends AuthEvent {}
-
-class Authenticate extends AuthEvent {}

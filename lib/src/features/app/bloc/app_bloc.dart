@@ -7,15 +7,18 @@ import 'app_state.dart';
 class AppBloc extends HydratedBloc<AppEvent, AppState> {
   AppBloc(Flavor flavor) : _flavor = flavor;
 
+  bool get userLoggedIn => state.currentUser != null;
+
   Flavor _flavor;
   @override
-  get initialState => super.initialState.copyWith(loading: false) ?? AppState.initialState(flavor: _flavor);
+  get initialState => super.initialState ?? AppState.initialState(flavor: _flavor);
 
   @override
   Stream<AppState> mapEventToState(AppEvent event) async* {
     yield event.when<AppState>(
       hasOnboarded: () => state.copyWith(hasOnboarded: false),
-      userLoggedIn: (user) => state.copyWith(currentUser: user),
+      //TODO Encode PIN!!!
+      userLoggedIn: (user, pin) => state.copyWith(currentUser: user ?? state.currentUser, pin: pin),
       userLoggedOut: () => state.copyWith(currentUser: null),
       walkThroughComplete: () => state.copyWith(hasCompletedWalkThrough: true),
       themChanged: (theme) => state.copyWith(theme: theme),

@@ -11,12 +11,14 @@ abstract class _$PinCodeEvent {
   Result when<Result extends Object>({
     @required Result pinEntered(int pin),
     @required Result pinDeleted(),
+    @required Result clear(),
   });
 
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result pinEntered(int pin),
     Result pinDeleted(),
+    Result clear(),
     @required Result orElse(),
   });
 
@@ -24,12 +26,14 @@ abstract class _$PinCodeEvent {
   Result map<Result extends Object>({
     @required Result pinEntered(PinEntered value),
     @required Result pinDeleted(PinDeleted value),
+    @required Result clear(PinCleared value),
   });
 
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result pinEntered(PinEntered value),
     Result pinDeleted(PinDeleted value),
+    Result clear(PinCleared value),
     @required Result orElse(),
   });
 }
@@ -68,9 +72,11 @@ class _$PinEntered implements PinEntered {
   Result when<Result extends Object>({
     @required Result pinEntered(int pin),
     @required Result pinDeleted(),
+    @required Result clear(),
   }) {
     assert(pinEntered != null);
     assert(pinDeleted != null);
+    assert(clear != null);
     return pinEntered(pin);
   }
 
@@ -79,6 +85,7 @@ class _$PinEntered implements PinEntered {
   Result maybeWhen<Result extends Object>({
     Result pinEntered(int pin),
     Result pinDeleted(),
+    Result clear(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -93,9 +100,11 @@ class _$PinEntered implements PinEntered {
   Result map<Result extends Object>({
     @required Result pinEntered(PinEntered value),
     @required Result pinDeleted(PinDeleted value),
+    @required Result clear(PinCleared value),
   }) {
     assert(pinEntered != null);
     assert(pinDeleted != null);
+    assert(clear != null);
     return pinEntered(this);
   }
 
@@ -104,6 +113,7 @@ class _$PinEntered implements PinEntered {
   Result maybeMap<Result extends Object>({
     Result pinEntered(PinEntered value),
     Result pinDeleted(PinDeleted value),
+    Result clear(PinCleared value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -143,9 +153,11 @@ class _$PinDeleted implements PinDeleted {
   Result when<Result extends Object>({
     @required Result pinEntered(int pin),
     @required Result pinDeleted(),
+    @required Result clear(),
   }) {
     assert(pinEntered != null);
     assert(pinDeleted != null);
+    assert(clear != null);
     return pinDeleted();
   }
 
@@ -154,6 +166,7 @@ class _$PinDeleted implements PinDeleted {
   Result maybeWhen<Result extends Object>({
     Result pinEntered(int pin),
     Result pinDeleted(),
+    Result clear(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -168,9 +181,11 @@ class _$PinDeleted implements PinDeleted {
   Result map<Result extends Object>({
     @required Result pinEntered(PinEntered value),
     @required Result pinDeleted(PinDeleted value),
+    @required Result clear(PinCleared value),
   }) {
     assert(pinEntered != null);
     assert(pinDeleted != null);
+    assert(clear != null);
     return pinDeleted(this);
   }
 
@@ -179,6 +194,7 @@ class _$PinDeleted implements PinDeleted {
   Result maybeMap<Result extends Object>({
     Result pinEntered(PinEntered value),
     Result pinDeleted(PinDeleted value),
+    Result clear(PinCleared value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -191,4 +207,81 @@ class _$PinDeleted implements PinDeleted {
 
 abstract class PinDeleted implements PinCodeEvent {
   const factory PinDeleted() = _$PinDeleted;
+}
+
+class _$PinCleared implements PinCleared {
+  const _$PinCleared();
+
+  @override
+  String toString() {
+    return 'PinCodeEvent.clear()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return other is PinCleared;
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result pinEntered(int pin),
+    @required Result pinDeleted(),
+    @required Result clear(),
+  }) {
+    assert(pinEntered != null);
+    assert(pinDeleted != null);
+    assert(clear != null);
+    return clear();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result pinEntered(int pin),
+    Result pinDeleted(),
+    Result clear(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (clear != null) {
+      return clear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result pinEntered(PinEntered value),
+    @required Result pinDeleted(PinDeleted value),
+    @required Result clear(PinCleared value),
+  }) {
+    assert(pinEntered != null);
+    assert(pinDeleted != null);
+    assert(clear != null);
+    return clear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result pinEntered(PinEntered value),
+    Result pinDeleted(PinDeleted value),
+    Result clear(PinCleared value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (clear != null) {
+      return clear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PinCleared implements PinCodeEvent {
+  const factory PinCleared() = _$PinCleared;
 }

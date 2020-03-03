@@ -24,6 +24,7 @@ class PinCodeBloc extends Bloc<PinCodeEvent, PinCodeState> {
         }
         return PinChanged(pin: state.pin);
       },
+      clear: () => PinChanged(pin: ""),
     );
   }
 }

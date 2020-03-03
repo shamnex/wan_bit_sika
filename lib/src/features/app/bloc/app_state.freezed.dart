@@ -17,6 +17,7 @@ abstract class _$AppState {
   AppTheme get theme;
   bool get hasCompletedWalkThrough;
   User get currentUser;
+  String get pin;
 
   AppState copyWith(
       {bool hasOnboarded,
@@ -24,7 +25,8 @@ abstract class _$AppState {
       Flavor flavor,
       AppTheme theme,
       bool hasCompletedWalkThrough,
-      User currentUser});
+      User currentUser,
+      String pin});
 
   Map<String, dynamic> toJson();
 }
@@ -37,7 +39,8 @@ class _$_AppState implements _AppState {
       this.flavor,
       this.theme,
       this.hasCompletedWalkThrough,
-      this.currentUser});
+      this.currentUser,
+      this.pin});
 
   factory _$_AppState.fromJson(Map<String, dynamic> json) =>
       _$_$_AppStateFromJson(json);
@@ -54,10 +57,12 @@ class _$_AppState implements _AppState {
   final bool hasCompletedWalkThrough;
   @override
   final User currentUser;
+  @override
+  final String pin;
 
   @override
   String toString() {
-    return 'AppState(hasOnboarded: $hasOnboarded, loading: $loading, flavor: $flavor, theme: $theme, hasCompletedWalkThrough: $hasCompletedWalkThrough, currentUser: $currentUser)';
+    return 'AppState(hasOnboarded: $hasOnboarded, loading: $loading, flavor: $flavor, theme: $theme, hasCompletedWalkThrough: $hasCompletedWalkThrough, currentUser: $currentUser, pin: $pin)';
   }
 
   @override
@@ -71,7 +76,8 @@ class _$_AppState implements _AppState {
         (identical(other.hasCompletedWalkThrough, hasCompletedWalkThrough) ||
             other.hasCompletedWalkThrough == hasCompletedWalkThrough) &&
         (identical(other.currentUser, currentUser) ||
-            other.currentUser == currentUser);
+            other.currentUser == currentUser) &&
+        (identical(other.pin, pin) || other.pin == pin);
   }
 
   @override
@@ -82,7 +88,8 @@ class _$_AppState implements _AppState {
       flavor.hashCode ^
       theme.hashCode ^
       hasCompletedWalkThrough.hashCode ^
-      currentUser.hashCode;
+      currentUser.hashCode ^
+      pin.hashCode;
 
   @override
   _$_AppState copyWith({
@@ -92,6 +99,7 @@ class _$_AppState implements _AppState {
     Object theme = immutable,
     Object hasCompletedWalkThrough = immutable,
     Object currentUser = immutable,
+    Object pin = immutable,
   }) {
     return _$_AppState(
       hasOnboarded:
@@ -104,6 +112,7 @@ class _$_AppState implements _AppState {
           : hasCompletedWalkThrough as bool,
       currentUser:
           currentUser == immutable ? this.currentUser : currentUser as User,
+      pin: pin == immutable ? this.pin : pin as String,
     );
   }
 
@@ -120,7 +129,8 @@ abstract class _AppState implements AppState {
       Flavor flavor,
       AppTheme theme,
       bool hasCompletedWalkThrough,
-      User currentUser}) = _$_AppState;
+      User currentUser,
+      String pin}) = _$_AppState;
 
   factory _AppState.fromJson(Map<String, dynamic> json) = _$_AppState.fromJson;
 
@@ -136,6 +146,8 @@ abstract class _AppState implements AppState {
   bool get hasCompletedWalkThrough;
   @override
   User get currentUser;
+  @override
+  String get pin;
 
   @override
   _AppState copyWith(
@@ -144,5 +156,6 @@ abstract class _AppState implements AppState {
       Flavor flavor,
       AppTheme theme,
       bool hasCompletedWalkThrough,
-      User currentUser});
+      User currentUser,
+      String pin});
 }

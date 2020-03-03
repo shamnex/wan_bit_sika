@@ -16,6 +16,7 @@ _$_AppState _$_$_AppStateFromJson(Map<String, dynamic> json) {
     currentUser: json['currentUser'] == null
         ? null
         : User.fromJson(json['currentUser'] as Map<String, dynamic>),
+    pin: json['pin'] as String,
   );
 }
 
@@ -27,6 +28,7 @@ Map<String, dynamic> _$_$_AppStateToJson(_$_AppState instance) =>
       'theme': _$AppThemeEnumMap[instance.theme],
       'hasCompletedWalkThrough': instance.hasCompletedWalkThrough,
       'currentUser': instance.currentUser,
+      'pin': instance.pin,
     };
 
 T _$enumDecode<T>(

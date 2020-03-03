@@ -10,7 +10,7 @@ part 'app_event.g.dart';
 @immutable
 abstract class AppEvent with _$AppEvent {
   const factory AppEvent.hasOnboarded() = HasOnboarded;
-  const factory AppEvent.userLoggedIn(User user) = UserLoggedIn;
+  const factory AppEvent.userLoggedIn({User user, String pin}) = UserLoggedIn;
   const factory AppEvent.userLoggedOut() = UserLoggedOut;
   const factory AppEvent.walkThroughComplete() = HasCompletedWalkThrough;
   const factory AppEvent.themChanged({AppTheme them}) = ThemeChanged;

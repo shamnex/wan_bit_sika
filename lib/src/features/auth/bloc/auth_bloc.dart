@@ -1,13 +1,13 @@
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:wan_bi_sika/src/core/network/http_error_helper.dart';
 import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
 import 'package:wan_bi_sika/src/features/app/bloc/app_event.dart';
 import 'package:wan_bi_sika/src/features/auth/auth_repository.dart';
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 
 import 'bloc.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState> with DioErrorHelper {
+class AuthBloc extends HydratedBloc<AuthEvent, AuthState> with DioErrorHelper {
   final AuthRepository repository;
   final AppBloc appBloc;
   AuthBloc(this.repository, this.appBloc) {
@@ -18,7 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with DioErrorHelper {
     });
   }
   @override
-  AuthState get initialState => appBloc.state.currentUser != null ? AuthAuthenticated() : AuthUnAuthenticated();
+  AuthState get initialState => super.initialState ?? AuthUnAuthenticated();
 
   @override
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
@@ -33,6 +33,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with DioErrorHelper {
       }
       if (event is Authenticate) {
         yield AuthLoading();
+        await Future.delayed(Duration(milliseconds: 2000));
         yield AuthAuthenticated();
       }
       if (event is Deauthenticate) {
@@ -46,6 +47,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> with DioErrorHelper {
     } catch (e) {
       yield AuthLoading();
       yield state;
+    }
+  }
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    try {
+      return AuthState.fromJson(json);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  @override
+  Map<String, dynamic> toJson(state) {
+    try {
+      return state.toJson();
+    } catch (e) {
+      return null;
     }
   }
 }

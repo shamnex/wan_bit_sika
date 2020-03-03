@@ -34,9 +34,7 @@ class _StaggeredAnimatedColumnState extends State<StaggeredAnimatedColumn> with 
         AnimationController(
             vsync: this, duration: widget.duration ?? Duration(milliseconds: widget.children.length * 300));
     if (widget._animationController == null) {
-      Future.delayed(widget.delay ?? Duration(milliseconds: 100), () {
-        _animationController.forward();
-      });
+      _animationController.forward();
     }
     super.initState();
   }

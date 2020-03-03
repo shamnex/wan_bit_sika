@@ -35,7 +35,8 @@ class AppColors {
       900: Color(0xFF2444a0),
     },
   );
-  static const int _primaryColor = 0xFF276DF7;
+  static const int _primaryColor = 0xFF008fff;
+  // static const int _primaryColor = 0xFF276DF7;
   static const int _secondaryColor = 0xFFe2f2ff;
   static const Color background = Color(0xFFEDEDED);
   static const Color backgroundDark = Color(0xff303030);

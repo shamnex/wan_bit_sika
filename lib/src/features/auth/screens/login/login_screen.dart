@@ -17,21 +17,19 @@ class LoginScreen extends StatelessWidget {
   const LoginScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    print("here");
     final textTheme = Theme.of(context).textTheme;
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       body: Container(
         height: MediaQuery.of(context).size.height,
-        padding: AppPaddings.bodyH,
         child: BlocListener<LoginBloc, LoginState>(
           listener: (context, state) {
             state.when(
                 intial: () {},
                 loading: () {},
                 success: (user) {
-                  context.bloc<AppBloc>().add(UserLoggedIn(user));
+                  context.bloc<AppBloc>().add(UserLoggedIn(user: user));
                   Navigator.of(context).pushReplacementNamed(
                     AuthRoutes.accountSetup,
                     arguments: AccountSetupScreenArgs(user),
@@ -41,45 +39,48 @@ class LoginScreen extends StatelessWidget {
           child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
             return AppScreen(
               loading: state.maybeWhen<bool>(loading: () => true, orElse: () => false),
-              child: SafeArea(
-                child: SizedBox.expand(
-                  child: StaggeredAnimatedColumn(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'GET STARTED',
-                        style: textTheme.display1.copyWith(
-                          fontWeight: FontWeight.w900,
-                          color: theme.brightness == Brightness.light ? Colors.black87 : Colors.white,
+              child: Padding(
+                padding: AppPaddings.bodyH,
+                child: SafeArea(
+                  child: SizedBox.expand(
+                    child: StaggeredAnimatedColumn(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'GET STARTED',
+                          style: textTheme.display1.copyWith(
+                            fontWeight: FontWeight.w900,
+                            color: theme.brightness == Brightness.light ? Colors.black87 : Colors.white,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 16),
-                      AppButton(
-                          onPressed: () {
-                            context.bloc<LoginBloc>().add(LoginWithGoogle());
-                          },
-                          child: Stack(
-                            fit: StackFit.expand,
-                            children: <Widget>[
-                              Center(
-                                child: Text(
-                                  'Sign In With Google',
-                                  style: TextStyle(color: Colors.white),
+                        SizedBox(height: 16),
+                        AppButton(
+                            onPressed: () {
+                              context.bloc<LoginBloc>().add(LoginWithGoogle());
+                            },
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: <Widget>[
+                                Center(
+                                  child: Text(
+                                    'Sign In With Google',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Icon(
-                                  AppIcons.google,
-                                  color: Colors.white,
-                                ),
-                              )
-                            ],
-                          )),
-                      SizedBox(height: 16),
-                      TermsAndCondition(),
-                    ],
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Icon(
+                                    AppIcons.google,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            )),
+                        SizedBox(height: 16),
+                        TermsAndCondition(),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -12,6 +12,7 @@ import 'core/network/http_client.dart';
 import 'core/network/token_manager.dart';
 import 'features/auth/auth_repository.dart';
 import 'features/auth/bloc/auth_bloc.dart';
+import 'features/auth/screens/pin_code/pin_input_screen_bloc/pin_input_screen_bloc.dart';
 
 final sl = GetIt.instance..allowReassignment = true;
 
@@ -44,4 +45,5 @@ Future<void> init(Flavor flavor) async {
   //! GLOBAL STATE STUFFS
   sl.registerLazySingleton<AppBloc>(() => AppBloc(flavor));
   sl.registerLazySingleton<AuthBloc>(() => AuthBloc(sl(), sl()));
+  sl.registerLazySingleton<PinInputScreenBloc>(() => PinInputScreenBloc());
 }

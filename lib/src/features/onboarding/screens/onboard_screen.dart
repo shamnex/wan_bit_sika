@@ -3,12 +3,9 @@ import 'package:wan_bi_sika/src/constants/paddings.dart';
 import 'package:wan_bi_sika/src/constants/strings.dart';
 import 'package:wan_bi_sika/src/constants/svgs.dart';
 import 'package:wan_bi_sika/src/core/widgets/buttons.dart';
-import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
-import 'package:wan_bi_sika/src/features/app/bloc/app_event.dart';
 import 'package:wan_bi_sika/src/features/onboarding/screens/partials/indicators.dart';
 import 'package:wan_bi_sika/src/features/onboarding/screens/partials/onboard_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:wan_bi_sika/src/routes/app_routes.dart';
 

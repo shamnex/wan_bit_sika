@@ -21,7 +21,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is LoginWithGoogle) {
       yield Loading();
       await Future.delayed(Duration(milliseconds: 2000));
-      yield Success(user: User(email: 'mona.okeme@icloud.com', firstName: "Mona", lastName: "Okeme"));
+      yield Success(
+          user: User(
+        email: 'mona.okeme@gmail.com',
+        firstName: "Mona",
+        lastName: "Okeme",
+        userName: 'shamnex',
+      ));
     }
   }
 }

@@ -28,7 +28,7 @@ abstract class _$AppEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result hasOnboarded(),
-    @required Result userLoggedIn(User user),
+    @required Result userLoggedIn(User user, String pin),
     @required Result userLoggedOut(),
     @required Result walkThroughComplete(),
     @required Result themChanged(AppTheme them),
@@ -37,7 +37,7 @@ abstract class _$AppEvent {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result hasOnboarded(),
-    Result userLoggedIn(User user),
+    Result userLoggedIn(User user, String pin),
     Result userLoggedOut(),
     Result walkThroughComplete(),
     Result themChanged(AppTheme them),
@@ -90,7 +90,7 @@ class _$HasOnboarded implements HasOnboarded {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result hasOnboarded(),
-    @required Result userLoggedIn(User user),
+    @required Result userLoggedIn(User user, String pin),
     @required Result userLoggedOut(),
     @required Result walkThroughComplete(),
     @required Result themChanged(AppTheme them),
@@ -107,7 +107,7 @@ class _$HasOnboarded implements HasOnboarded {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result hasOnboarded(),
-    Result userLoggedIn(User user),
+    Result userLoggedIn(User user, String pin),
     Result userLoggedOut(),
     Result walkThroughComplete(),
     Result themChanged(AppTheme them),
@@ -169,34 +169,39 @@ abstract class HasOnboarded implements AppEvent {
 
 @JsonSerializable()
 class _$UserLoggedIn implements UserLoggedIn {
-  const _$UserLoggedIn(this.user);
+  const _$UserLoggedIn({this.user, this.pin});
 
   factory _$UserLoggedIn.fromJson(Map<String, dynamic> json) =>
       _$_$UserLoggedInFromJson(json);
 
   @override
   final User user;
+  @override
+  final String pin;
 
   @override
   String toString() {
-    return 'AppEvent.userLoggedIn(user: $user)';
+    return 'AppEvent.userLoggedIn(user: $user, pin: $pin)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return other is UserLoggedIn &&
-        (identical(other.user, user) || other.user == user);
+        (identical(other.user, user) || other.user == user) &&
+        (identical(other.pin, pin) || other.pin == pin);
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ user.hashCode;
+  int get hashCode => runtimeType.hashCode ^ user.hashCode ^ pin.hashCode;
 
   @override
   _$UserLoggedIn copyWith({
     Object user = immutable,
+    Object pin = immutable,
   }) {
     return _$UserLoggedIn(
-      user == immutable ? this.user : user as User,
+      user: user == immutable ? this.user : user as User,
+      pin: pin == immutable ? this.pin : pin as String,
     );
   }
 
@@ -204,7 +209,7 @@ class _$UserLoggedIn implements UserLoggedIn {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result hasOnboarded(),
-    @required Result userLoggedIn(User user),
+    @required Result userLoggedIn(User user, String pin),
     @required Result userLoggedOut(),
     @required Result walkThroughComplete(),
     @required Result themChanged(AppTheme them),
@@ -214,14 +219,14 @@ class _$UserLoggedIn implements UserLoggedIn {
     assert(userLoggedOut != null);
     assert(walkThroughComplete != null);
     assert(themChanged != null);
-    return userLoggedIn(user);
+    return userLoggedIn(user, pin);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result hasOnboarded(),
-    Result userLoggedIn(User user),
+    Result userLoggedIn(User user, String pin),
     Result userLoggedOut(),
     Result walkThroughComplete(),
     Result themChanged(AppTheme them),
@@ -229,7 +234,7 @@ class _$UserLoggedIn implements UserLoggedIn {
   }) {
     assert(orElse != null);
     if (userLoggedIn != null) {
-      return userLoggedIn(user);
+      return userLoggedIn(user, pin);
     }
     return orElse();
   }
@@ -275,14 +280,15 @@ class _$UserLoggedIn implements UserLoggedIn {
 }
 
 abstract class UserLoggedIn implements AppEvent {
-  const factory UserLoggedIn(User user) = _$UserLoggedIn;
+  const factory UserLoggedIn({User user, String pin}) = _$UserLoggedIn;
 
   factory UserLoggedIn.fromJson(Map<String, dynamic> json) =
       _$UserLoggedIn.fromJson;
 
   User get user;
+  String get pin;
 
-  UserLoggedIn copyWith({User user});
+  UserLoggedIn copyWith({User user, String pin});
 }
 
 @JsonSerializable()
@@ -309,7 +315,7 @@ class _$UserLoggedOut implements UserLoggedOut {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result hasOnboarded(),
-    @required Result userLoggedIn(User user),
+    @required Result userLoggedIn(User user, String pin),
     @required Result userLoggedOut(),
     @required Result walkThroughComplete(),
     @required Result themChanged(AppTheme them),
@@ -326,7 +332,7 @@ class _$UserLoggedOut implements UserLoggedOut {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result hasOnboarded(),
-    Result userLoggedIn(User user),
+    Result userLoggedIn(User user, String pin),
     Result userLoggedOut(),
     Result walkThroughComplete(),
     Result themChanged(AppTheme them),
@@ -410,7 +416,7 @@ class _$HasCompletedWalkThrough implements HasCompletedWalkThrough {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result hasOnboarded(),
-    @required Result userLoggedIn(User user),
+    @required Result userLoggedIn(User user, String pin),
     @required Result userLoggedOut(),
     @required Result walkThroughComplete(),
     @required Result themChanged(AppTheme them),
@@ -427,7 +433,7 @@ class _$HasCompletedWalkThrough implements HasCompletedWalkThrough {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result hasOnboarded(),
-    Result userLoggedIn(User user),
+    Result userLoggedIn(User user, String pin),
     Result userLoggedOut(),
     Result walkThroughComplete(),
     Result themChanged(AppTheme them),
@@ -525,7 +531,7 @@ class _$ThemeChanged implements ThemeChanged {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result hasOnboarded(),
-    @required Result userLoggedIn(User user),
+    @required Result userLoggedIn(User user, String pin),
     @required Result userLoggedOut(),
     @required Result walkThroughComplete(),
     @required Result themChanged(AppTheme them),
@@ -542,7 +548,7 @@ class _$ThemeChanged implements ThemeChanged {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result hasOnboarded(),
-    Result userLoggedIn(User user),
+    Result userLoggedIn(User user, String pin),
     Result userLoggedOut(),
     Result walkThroughComplete(),
     Result themChanged(AppTheme them),

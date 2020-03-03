@@ -8,7 +8,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'app_config.dart';
 import 'flavor/flavor.dart';
-import 'src/features/app/screens/app.dart';
+import 'src/features/app/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

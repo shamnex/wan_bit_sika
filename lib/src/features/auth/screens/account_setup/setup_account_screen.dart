@@ -4,12 +4,13 @@ import 'package:wan_bi_sika/src/constants/colors.dart';
 import 'package:wan_bi_sika/src/constants/paddings.dart';
 import 'package:wan_bi_sika/src/core/widgets/buttons.dart';
 import 'package:wan_bi_sika/src/core/widgets/screen.dart';
-import 'package:wan_bi_sika/src/core/widgets/staggered_animated_column.dart';
 import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
+import 'package:wan_bi_sika/src/features/app/bloc/app_event.dart';
 import 'package:wan_bi_sika/src/features/app/bloc/app_state.dart';
 import 'package:wan_bi_sika/src/features/auth/routes/auth_routes.dart';
-import 'package:wan_bi_sika/src/features/auth/screens/login/bloc/login_bloc.dart';
-import 'package:wan_bi_sika/src/features/auth/screens/login/bloc/login_state.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/pin_code/pin_input_screen_bloc/pin_input_screen_bloc.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/pin_code/pin_input_screen_bloc/pin_input_screen_state.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/pin_code/pin_input_screen_bloc/pin_input_screen_event.dart';
 
 class AccountSetupScreen extends StatefulWidget {
   final AccountSetupScreenArgs args;
@@ -48,129 +49,176 @@ class _AccountSetupScreenState extends State<AccountSetupScreen> {
             return AppScreen(
               child: SafeArea(
                 child: SizedBox.expand(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 16),
-                      Text(
-                        'Setup your account Wan bi Sika Account',
-                        style: textTheme.title.copyWith(
-                          fontWeight: FontWeight.w300,
-                          color: AppColors.primary,
+                  child: BlocBuilder<PinInputScreenBloc, PinInputScreenState>(builder: (context, pinInputState) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 16),
+                        Text(
+                          'Setup your account Wan bi Sika Account',
+                          style: textTheme.title.copyWith(
+                            fontWeight: FontWeight.w300,
+                            color: AppColors.primary,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 16),
-                      Stepper(
-                        onStepTapped: (index) {
-                          setState(() {
-                            currentStep = index;
-                          });
-                        },
-                        currentStep: currentStep,
-                        controlsBuilder: (BuildContext context,
-                            {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
-                          return currentStep != 0
-                              ? SizedBox()
-                              : Padding(
-                                  padding: const EdgeInsets.only(top: 16.0),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
+                        SizedBox(height: 16),
+                        Stepper(
+                          onStepTapped: (index) {
+                            setState(() {
+                              currentStep = index;
+                            });
+                          },
+                          currentStep: currentStep,
+                          controlsBuilder: (BuildContext context,
+                              {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
+                            return currentStep != 0
+                                ? SizedBox()
+                                : Padding(
+                                    padding: const EdgeInsets.only(top: 16.0),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: SizedBox(
+                                        width: 150,
+                                        height: 40,
+                                        child: AppButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              currentStep++;
+                                            });
+                                          },
+                                          child: Text(
+                                            'Next',
+                                            style: TextStyle(color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                    ));
+                          },
+                          steps: [
+                            Step(
+                              title: RichText(
+                                text: TextSpan(
+                                  style: textTheme.body1,
+                                  children: [
+                                    TextSpan(text: "Authentication"),
+                                  ],
+                                ),
+                              ),
+                              isActive: currentStep == 0,
+                              subtitle: Text(
+                                "with Gooogle Sign-In",
+                                style: textTheme.caption,
+                              ),
+                              state: StepState.complete,
+                              content: Container(
+                                padding: AppPaddings.mA,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                                    border: Border.all(
+                                      color: AppColors.line,
+                                    )),
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      backgroundColor: AppColors.primary.shade900,
+                                      child: Text(
+                                        user.firstName.substring(0, 1),
+                                        style: textTheme.body2.copyWith(
+                                          fontWeight: FontWeight.w800,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 8),
+                                    Flexible(
+                                      child: RichText(
+                                        maxLines: 2,
+                                        text: TextSpan(
+                                          style: textTheme.body1.copyWith(
+                                            height: 1.3,
+                                          ),
+                                          children: [
+                                            TextSpan(text: "${user.firstName} ${user.lastName} \n"),
+                                            TextSpan(
+                                              text: "${user.email}",
+                                              style: textTheme.body1.copyWith(
+                                                color: AppColors.primary,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Step(
+                              isActive: currentStep == 1,
+                              state: pinInputState.verified ? StepState.complete : StepState.editing,
+                              title: const Text('Pin Setup'),
+                              content: Builder(builder: (context) {
+                                if (pinInputState.verified) {
+                                  return Align(
+                                    alignment: Alignment.centerLeft,
                                     child: SizedBox(
                                       width: 150,
                                       height: 40,
-                                      child: AppButton(
+                                      child: AppButton.white(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 20,
+                                            spreadRadius: 4,
+                                            color: AppColors.secondary.shade300.withOpacity(.4),
+                                          )
+                                        ],
                                         onPressed: () {
-                                          setState(() {
-                                            currentStep++;
-                                          });
+                                          context.bloc<PinInputScreenBloc>().add(ClearPinInput());
                                         },
                                         child: Text(
-                                          'Next',
-                                          style: TextStyle(color: Colors.white),
+                                          'Remove Pincode',
+                                          style: TextStyle(color: Colors.red, fontSize: 12),
                                         ),
                                       ),
                                     ),
-                                  ));
-                        },
-                        steps: [
-                          Step(
-                            title: RichText(
-                              text: TextSpan(
-                                style: textTheme.body1,
-                                children: [
-                                  TextSpan(text: "Authentication"),
-                                ],
-                              ),
-                            ),
-                            isActive: true,
-                            subtitle: Text(
-                              "with Gooogle Sign-In",
-                              style: textTheme.caption,
-                            ),
-                            state: StepState.complete,
-                            content: Container(
-                              padding: AppPaddings.mA,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                                  border: Border.all(
-                                    color: AppColors.line,
-                                  )),
-                              width: MediaQuery.of(context).size.width,
-                              child: Row(
-                                children: <Widget>[
-                                  CircleAvatar(
-                                    backgroundColor: AppColors.primary.shade900,
-                                    child: Text(
-                                      user.firstName.substring(0, 1),
-                                      style: textTheme.body2.copyWith(
-                                        fontWeight: FontWeight.w800,
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                                  );
+                                }
+                                return AppButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pushNamed(AuthRoutes.setupPinCode);
+                                  },
+                                  child: Text(
+                                    'Setup Pincode',
+                                    style: TextStyle(color: Colors.white),
                                   ),
-                                  SizedBox(width: 8),
-                                  Flexible(
-                                    child: RichText(
-                                      maxLines: 2,
-                                      text: TextSpan(
-                                        style: textTheme.body1.copyWith(
-                                          height: 1.3,
-                                        ),
-                                        children: [
-                                          TextSpan(text: "${user.firstName} ${user.lastName} \n"),
-                                          TextSpan(
-                                            text: "${user.email}",
-                                            style: textTheme.body1.copyWith(
-                                              color: AppColors.primary,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                );
+                              }),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        if (pinInputState.verified)
+                          AppButton(
+                            onPressed: () {
+                              context.bloc<AppBloc>().add(
+                                    UserLoggedIn(
+                                      pin: pinInputState.pin,
+                                      user: context.bloc<AppBloc>().state.currentUser,
                                     ),
-                                  ),
-                                ],
-                              ),
+                                  );
+                              Navigator.of(context, rootNavigator: true).pop(context);
+                            },
+                            child: Text(
+                              'Complete Setup',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
-                          Step(
-                            isActive: false,
-                            state: StepState.editing,
-                            title: const Text('Pin Setup'),
-                            content: AppButton(
-                              onPressed: () {
-                                Navigator.of(context).pushNamed(AuthRoutes.pinCode);
-                              },
-                              child: Text(
-                                'Setup Pincode',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                        SizedBox(height: 32)
+                      ],
+                    );
+                  }),
                 ),
               ),
             );

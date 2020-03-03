@@ -48,7 +48,7 @@ final appThemeData = {
     ),
     hintColor: AppColors.hint,
     indicatorColor: AppColors.primary,
-    iconTheme: IconThemeData(color: AppColors.secondary),
+    iconTheme: IconThemeData(color: AppColors.primary),
     backgroundColor: AppColors.background,
     inputDecorationTheme: InputDecorationTheme(
       hasFloatingPlaceholder: true,

@@ -4,7 +4,6 @@ import 'package:wan_bi_sika/src/features/app/bloc/app_bloc.dart';
 import 'package:wan_bi_sika/src/features/auth/bloc/auth_bloc.dart';
 import 'package:wan_bi_sika/src/features/auth/bloc/auth_event.dart';
 import 'package:provider/provider.dart';
-
 import 'package:wan_bi_sika/src/service_locator.dart' as di;
 
 class AppConfig extends StatelessWidget {

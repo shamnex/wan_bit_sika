@@ -19,6 +19,7 @@ abstract class AppState with _$AppState {
     AppTheme theme,
     bool hasCompletedWalkThrough,
     User currentUser,
+    String pin,
   }) = _AppState;
 
   factory AppState.fromJson(Map<String, dynamic> json) => _$AppStateFromJson(json);
@@ -29,5 +30,6 @@ abstract class AppState with _$AppState {
         hasOnboarded: false,
         flavor: Flavor.development,
         loading: false,
+        pin: '',
       );
 }

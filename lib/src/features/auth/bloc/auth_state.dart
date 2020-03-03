@@ -1,15 +1,16 @@
 import 'package:equatable/equatable.dart';
 
-abstract class AuthState extends Equatable {
-  @override
-  List<Object> get props => [];
-}
+import 'package:meta/meta.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class AuthLoading extends AuthState {}
+part 'auth_state.freezed.dart';
+part 'auth_state.g.dart';
 
-class AuthAuthenticated extends AuthState {}
-
-class AuthUnAuthenticated extends AuthState {
-  @override
-  List<Object> get props => ['AuthUnAuthenticated'];
+@immutable
+abstract class AuthState with _$AuthState {
+  const factory AuthState.loading() = AuthLoading;
+  const factory AuthState.authAuthenticated() = AuthAuthenticated;
+  const factory AuthState.authUnAuthenticated() = AuthUnAuthenticated;
+  const factory AuthState.authVerifyPin() = AuthVerifyPin;
+  factory AuthState.fromJson(Map<String, dynamic> json) => _$AuthStateFromJson(json);
 }
