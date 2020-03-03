@@ -17,7 +17,6 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   Stream<AppState> mapEventToState(AppEvent event) async* {
     yield event.when<AppState>(
       hasOnboarded: () => state.copyWith(hasOnboarded: false),
-      //TODO Encode PIN!!!
       userLoggedIn: (user, pin) => state.copyWith(currentUser: user ?? state.currentUser, pin: pin),
       userLoggedOut: () => state.copyWith(currentUser: null),
       walkThroughComplete: () => state.copyWith(hasCompletedWalkThrough: true),
