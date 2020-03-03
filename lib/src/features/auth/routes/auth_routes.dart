@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wan_bi_sika/src/features/app/model/user_model.dart';
 import 'package:wan_bi_sika/src/features/auth/screens/account_setup/setup_account_screen.dart';
 import 'package:wan_bi_sika/src/features/auth/screens/login/login_screen.dart';
+import 'package:wan_bi_sika/src/features/auth/screens/pin_code/pin_code_screen.dart';
 
 class AuthRoutes {
   static const String login = "/auth/login";
   static const String accountSetup = "/auth/setup";
+  static const String pinCode = "/auth/pin";
 
   static Route<dynamic> configureRoutes(RouteSettings settings) {
     return CupertinoPageRoute(builder: (context) {
@@ -18,9 +21,16 @@ class AuthRoutes {
       case login:
         return LoginScreen();
       case accountSetup:
-        return LoginScreen();
+        return AccountSetupScreen(args: settings.arguments);
+      case pinCode:
+        return PinCodeScreen();
       default:
-        return AccountSetupScreen();
+        return LoginScreen();
     }
   }
+}
+
+class AccountSetupScreenArgs {
+  final User user;
+  AccountSetupScreenArgs(this.user);
 }

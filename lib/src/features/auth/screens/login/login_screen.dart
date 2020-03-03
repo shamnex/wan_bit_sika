@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   const LoginScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    print("here");
     final textTheme = Theme.of(context).textTheme;
     final theme = Theme.of(context);
     return Scaffold(
@@ -31,7 +32,10 @@ class LoginScreen extends StatelessWidget {
                 loading: () {},
                 success: (user) {
                   context.bloc<AppBloc>().add(UserLoggedIn(user));
-                  Navigator.of(context).pushReplacementNamed(AuthRoutes.accountSetup);
+                  Navigator.of(context).pushReplacementNamed(
+                    AuthRoutes.accountSetup,
+                    arguments: AccountSetupScreenArgs(user),
+                  );
                 });
           },
           child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {

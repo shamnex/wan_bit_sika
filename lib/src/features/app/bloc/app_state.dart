@@ -15,7 +15,6 @@ abstract class AppState with _$AppState {
   const factory AppState({
     bool hasOnboarded,
     bool loading,
-    int iteration,
     Flavor flavor,
     AppTheme theme,
     bool hasCompletedWalkThrough,
@@ -29,5 +28,6 @@ abstract class AppState with _$AppState {
         hasCompletedWalkThrough: false,
         hasOnboarded: false,
         flavor: Flavor.development,
+        loading: false,
       );
 }

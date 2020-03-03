@@ -10,7 +10,6 @@ _$_AppState _$_$_AppStateFromJson(Map<String, dynamic> json) {
   return _$_AppState(
     hasOnboarded: json['hasOnboarded'] as bool,
     loading: json['loading'] as bool,
-    iteration: json['iteration'] as int,
     flavor: _$enumDecodeNullable(_$FlavorEnumMap, json['flavor']),
     theme: _$enumDecodeNullable(_$AppThemeEnumMap, json['theme']),
     hasCompletedWalkThrough: json['hasCompletedWalkThrough'] as bool,
@@ -24,7 +23,6 @@ Map<String, dynamic> _$_$_AppStateToJson(_$_AppState instance) =>
     <String, dynamic>{
       'hasOnboarded': instance.hasOnboarded,
       'loading': instance.loading,
-      'iteration': instance.iteration,
       'flavor': _$FlavorEnumMap[instance.flavor],
       'theme': _$AppThemeEnumMap[instance.theme],
       'hasCompletedWalkThrough': instance.hasCompletedWalkThrough,

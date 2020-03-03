@@ -13,7 +13,6 @@ AppState _$AppStateFromJson(Map<String, dynamic> json) {
 abstract class _$AppState {
   bool get hasOnboarded;
   bool get loading;
-  int get iteration;
   Flavor get flavor;
   AppTheme get theme;
   bool get hasCompletedWalkThrough;
@@ -22,7 +21,6 @@ abstract class _$AppState {
   AppState copyWith(
       {bool hasOnboarded,
       bool loading,
-      int iteration,
       Flavor flavor,
       AppTheme theme,
       bool hasCompletedWalkThrough,
@@ -36,7 +34,6 @@ class _$_AppState implements _AppState {
   const _$_AppState(
       {this.hasOnboarded,
       this.loading,
-      this.iteration,
       this.flavor,
       this.theme,
       this.hasCompletedWalkThrough,
@@ -50,8 +47,6 @@ class _$_AppState implements _AppState {
   @override
   final bool loading;
   @override
-  final int iteration;
-  @override
   final Flavor flavor;
   @override
   final AppTheme theme;
@@ -62,7 +57,7 @@ class _$_AppState implements _AppState {
 
   @override
   String toString() {
-    return 'AppState(hasOnboarded: $hasOnboarded, loading: $loading, iteration: $iteration, flavor: $flavor, theme: $theme, hasCompletedWalkThrough: $hasCompletedWalkThrough, currentUser: $currentUser)';
+    return 'AppState(hasOnboarded: $hasOnboarded, loading: $loading, flavor: $flavor, theme: $theme, hasCompletedWalkThrough: $hasCompletedWalkThrough, currentUser: $currentUser)';
   }
 
   @override
@@ -71,8 +66,6 @@ class _$_AppState implements _AppState {
         (identical(other.hasOnboarded, hasOnboarded) ||
             other.hasOnboarded == hasOnboarded) &&
         (identical(other.loading, loading) || other.loading == loading) &&
-        (identical(other.iteration, iteration) ||
-            other.iteration == iteration) &&
         (identical(other.flavor, flavor) || other.flavor == flavor) &&
         (identical(other.theme, theme) || other.theme == theme) &&
         (identical(other.hasCompletedWalkThrough, hasCompletedWalkThrough) ||
@@ -86,7 +79,6 @@ class _$_AppState implements _AppState {
       runtimeType.hashCode ^
       hasOnboarded.hashCode ^
       loading.hashCode ^
-      iteration.hashCode ^
       flavor.hashCode ^
       theme.hashCode ^
       hasCompletedWalkThrough.hashCode ^
@@ -96,7 +88,6 @@ class _$_AppState implements _AppState {
   _$_AppState copyWith({
     Object hasOnboarded = immutable,
     Object loading = immutable,
-    Object iteration = immutable,
     Object flavor = immutable,
     Object theme = immutable,
     Object hasCompletedWalkThrough = immutable,
@@ -106,7 +97,6 @@ class _$_AppState implements _AppState {
       hasOnboarded:
           hasOnboarded == immutable ? this.hasOnboarded : hasOnboarded as bool,
       loading: loading == immutable ? this.loading : loading as bool,
-      iteration: iteration == immutable ? this.iteration : iteration as int,
       flavor: flavor == immutable ? this.flavor : flavor as Flavor,
       theme: theme == immutable ? this.theme : theme as AppTheme,
       hasCompletedWalkThrough: hasCompletedWalkThrough == immutable
@@ -127,7 +117,6 @@ abstract class _AppState implements AppState {
   const factory _AppState(
       {bool hasOnboarded,
       bool loading,
-      int iteration,
       Flavor flavor,
       AppTheme theme,
       bool hasCompletedWalkThrough,
@@ -139,8 +128,6 @@ abstract class _AppState implements AppState {
   bool get hasOnboarded;
   @override
   bool get loading;
-  @override
-  int get iteration;
   @override
   Flavor get flavor;
   @override
@@ -154,7 +141,6 @@ abstract class _AppState implements AppState {
   _AppState copyWith(
       {bool hasOnboarded,
       bool loading,
-      int iteration,
       Flavor flavor,
       AppTheme theme,
       bool hasCompletedWalkThrough,

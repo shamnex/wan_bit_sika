@@ -40,6 +40,7 @@ class AppColors {
   static const Color background = Color(0xFFEDEDED);
   static const Color backgroundDark = Color(0xff303030);
   static const Color text = Colors.black87;
+  static const Color line = Colors.black12;
   static List<Color> primaryGradient = [primary, secondary.shade900];
 
   static const Color success = Color(0xFF009944);

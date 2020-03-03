@@ -9,7 +9,7 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
 
   Flavor _flavor;
   @override
-  get initialState => super.initialState ?? AppState.initialState(flavor: _flavor);
+  get initialState => super.initialState.copyWith(loading: false) ?? AppState.initialState(flavor: _flavor);
 
   @override
   Stream<AppState> mapEventToState(AppEvent event) async* {
@@ -34,7 +34,6 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   @override
   Map<String, dynamic> toJson(state) {
     try {
-      print('here');
       return state.toJson();
     } catch (e) {
       return null;
